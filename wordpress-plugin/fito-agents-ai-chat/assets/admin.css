@@ -1,0 +1,192 @@
+.fito-admin-wrap {
+    margin-top: 20px;
+    max-width: 1000px;
+}
+
+.fito-header {
+    margin-bottom: 30px;
+}
+
+.fito-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0;
+    color: #101415;
+}
+
+.fito-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.fito-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+}
+
+.fito-settings-card, .fito-preview-card, .fito-info-card, .fito-shortcode-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.fito-settings-card h2, .fito-preview-card h2, .fito-info-card h2, .fito-shortcode-card h2 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.fito-form-group {
+    margin-bottom: 20px;
+}
+
+.fito-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.fito-form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.fito-form-row .fito-form-group {
+    flex: 1;
+}
+
+.fito-status-box {
+    display: flex;
+    items-center: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.fito-status-box.active {
+    background: #e6fffa;
+    color: #047481;
+}
+
+.fito-status-box.inactive {
+    background: #fff5f5;
+    color: #c53030;
+}
+
+.fito-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.fito-status-box.active .fito-dot {
+    animation: fito-pulse 2s infinite;
+}
+
+@keyframes fito-pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.fito-actions {
+    margin-top: 20px;
+}
+
+.fito-actions .button {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    height: auto;
+}
+
+.fito-info-card ol {
+    margin-left: 20px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.fito-info-card li {
+    margin-bottom: 10px;
+}
+
+.fito-shortcode-card code {
+    display: block;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #0356ff;
+}
+
+/* Toggle Switch */
+.fito-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.fito-toggle input {
+    display: none;
+}
+
+.fito-slider {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.fito-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .fito-slider {
+    background-color: #0356ff;
+}
+
+input:checked + .fito-slider:before {
+    transform: translateX(20px);
+}
+
+.fito-toggle-label {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+@media (max-width: 782px) {
+    .fito-main-grid {
+        grid-template-columns: 1fr;
+    }
+}

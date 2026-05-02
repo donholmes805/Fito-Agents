@@ -1,0 +1,106 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // --- Helper Functions ---
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && (getUserData().role == 'admin' || getUserData().role == 'owner');
+    }
+    
+    function isBusinessUser(businessId) {
+      return isAuthenticated() && getUserData().businessId == businessId;
+    }
+    
+    function isBusinessOwner(businessId) {
+      return isBusinessUser(businessId) && getUserData().role == 'business_owner';
+    }
+
+    // --- User Profiles ---
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isAuthenticated() && request.auth.uid == userId && (
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'businessId'])
+      ) || isAdmin();
+    }
+    
+    // --- Businesses ---
+    match /businesses/{businessId} {
+      allow get: if true; 
+      allow list: if isAdmin();
+      
+      allow create: if isAuthenticated() && (getUserData().role == 'business_owner' || isAdmin());
+      
+      // Protect billing fields from direct client updates
+      allow update: if isAdmin() || (
+        isBusinessOwner(businessId) && 
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny([
+          'plan', 'subscriptionStatus', 'stripeCustomerId', 'stripeSubscriptionId', 
+          'currentPeriodEnd', 'setupFeeStatus', 'ownerOverride'
+        ])
+      );
+    }
+
+    // --- Subscriptions ---
+    match /subscriptions/{subId} {
+      allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      allow write: if isAdmin(); // Clients never write to subscriptions directly
+    }
+    
+    // --- Agents ---
+    match /agents/{agentId} {
+      allow get: if true;
+      allow list: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      
+      allow create: if isAuthenticated() && (getUserData().role == 'business_owner' || isAdmin());
+      allow update: if isAdmin() || isBusinessOwner(resource.data.businessId);
+    }
+
+    // --- Knowledge Base ---
+    match /knowledgeBase/{itemId} {
+      allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      allow create: if isAuthenticated() && (getUserData().role == 'business_owner' || isAdmin());
+      allow update, delete: if isAdmin() || isBusinessOwner(resource.data.businessId);
+    }
+
+    // --- Conversations ---
+    match /conversations/{conversationId} {
+      allow create: if true;
+      allow get: if true; 
+      allow list: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      allow update: if true; 
+    }
+
+    // --- Messages ---
+    match /conversations/{conversationId}/messages/{messageId} {
+      allow create: if true;
+      allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(get(/databases/$(database)/documents/conversations/$(conversationId)).data.businessId)) || true;
+    }
+
+    // --- Leads ---
+    match /leads/{leadId} {
+      allow create: if true;
+      allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      allow update: if isAdmin() || isBusinessUser(resource.data.businessId);
+    }
+
+    // --- Audit Logs ---
+    match /auditLogs/{logId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // --- Usage Logs ---
+    match /usageLogs/{logId} {
+      allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
+      allow write: if isAdmin();
+    }
+  }
+}

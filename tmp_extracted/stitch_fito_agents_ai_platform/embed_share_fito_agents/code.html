@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Embed &amp; Share | Fito Agents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c6c6cb",
+                    "on-secondary-container": "#e4e7ff",
+                    "surface-container": "#1d2022",
+                    "surface-container-lowest": "#0b0f10",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-variant": "#323537",
+                    "on-secondary-fixed": "#001551",
+                    "surface-container-highest": "#323537",
+                    "surface-container-low": "#191c1e",
+                    "background": "#101415",
+                    "tertiary": "#4edea3",
+                    "on-primary": "#2d3137",
+                    "inverse-surface": "#e0e3e5",
+                    "primary": "#c3c6cf",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#003824",
+                    "on-surface": "#e0e3e5",
+                    "primary-fixed": "#dfe2eb",
+                    "outline": "#8f9095",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#001108",
+                    "inverse-on-surface": "#2d3133",
+                    "surface-bright": "#363a3b",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#101415",
+                    "secondary-container": "#0356ff",
+                    "primary-fixed-dim": "#c3c6cf",
+                    "primary-container": "#0a0e14",
+                    "on-primary-fixed": "#181c22",
+                    "secondary-fixed": "#dce1ff",
+                    "on-background": "#e0e3e5",
+                    "on-secondary-fixed-variant": "#0039b3",
+                    "surface-container-high": "#272a2c",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#002113",
+                    "outline-variant": "#45474b",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#43474e",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "surface": "#101415",
+                    "on-secondary": "#002780",
+                    "inverse-primary": "#5b5e66",
+                    "surface-tint": "#c3c6cf",
+                    "on-primary-container": "#787b83",
+                    "on-tertiary-container": "#008c60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "margin-page": "40px",
+                    "container-max": "1440px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "h2": ["Space Grotesk"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.5);
+        }
+        .code-block {
+            background: #020617;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-white">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-slate-800 bg-slate-950 flex flex-col z-40 font-space-grotesk text-sm antialiased">
+<div class="p-stack-lg">
+<div class="flex items-center gap-stack-sm mb-stack-lg">
+<div class="w-8 h-8 bg-secondary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">smart_toy</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-white leading-none">Fito Agents</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container">Enterprise Plan</p>
+</div>
+</div>
+<nav class="space-y-unit">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+                    Agent Fleet
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">database</span>
+                    Knowledge Base
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Leads
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-slate-900 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+                    Analytics
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-600/10 text-blue-400 border-r-2 border-blue-500 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+</div>
+<div class="mt-auto p-stack-lg border-t border-slate-800">
+<button class="w-full py-3 px-4 bg-secondary-container hover:bg-opacity-90 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 mb-stack-lg">
+<span class="material-symbols-outlined">add</span>
+                Deploy New Agent
+            </button>
+<nav class="space-y-unit">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+                    Account
+                </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="h-16 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-margin-page sticky top-0 z-30 font-space-grotesk font-medium">
+<div class="flex items-center gap-stack-lg">
+<span class="text-white text-lg font-bold">Settings / Embed &amp; Share</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-white cursor-pointer transition-all">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary-container rounded-full border border-slate-950"></span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a modern enterprise user with a sharp, clean-cut look, set against a dark, moody background with subtle cinematic lighting. The lighting emphasizes high-end technological sophistication through soft shadows and precise highlights, maintaining a corporate and authoritative aesthetic that aligns with a premium AI dashboard experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_6YEDwmI0pF19yOeekEroCxEtkF9kR8Ex52yHRxW4z2WZtm8ddCnKTcj8mqQn6k25zdXcgEhYvhVYNOCQfibmu73Y7xyKOnZHO9iuu_ABOK269vTaHwGfaj3q2QAq76O_uP5Ex8YO0xJUdrENG9GNL9cp5rBsORerLhrLefqV8Ny8TZY0rYuhllfm1nYjxkNLVc95jH2nx8-XNiPRkm2DZTWaRpdEvGtgGFEuxDSeN9sfpep7YFGiTSZvGmMKbQu50noImROlt-O_"/>
+</div>
+</div>
+</header>
+<!-- Content Grid -->
+<div class="p-margin-page max-w-container-max mx-auto">
+<div class="mb-stack-lg">
+<h2 class="font-h2 text-h2 text-white mb-unit">Embed &amp; Share</h2>
+<p class="text-on-surface-variant font-body-md">Integrate your AI agents into your existing workflows and websites with ease.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Universal Embed Code Card (Large) -->
+<section class="col-span-12 lg:col-span-8 glass-panel rounded-2xl p-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-secondary">code</span>
+<h3 class="font-h3 text-h3 text-white">Universal Embed Code</h3>
+</div>
+<span class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                            PRODUCTION READY
+                        </span>
+</div>
+<p class="text-on-surface-variant mb-stack-md text-sm">Add this script to the <code>&lt;head&gt;</code> or <code>&lt;body&gt;</code> tag of any website to enable the floating agent widget.</p>
+<div class="code-block p-stack-md rounded-xl border border-slate-800 flex items-center justify-between mb-stack-md group">
+<code class="text-secondary text-sm overflow-x-auto whitespace-nowrap custom-scrollbar py-2">
+                            &lt;script src="https://fitoagents.com/embed.js" data-agent-id="agent_12345"&gt;&lt;/script&gt;
+                        </code>
+</div>
+<div class="flex flex-wrap gap-stack-sm">
+<button class="px-stack-lg py-stack-sm bg-secondary-container text-white rounded-lg font-semibold flex items-center gap-2 hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+                            Copy Embed Code
+                        </button>
+<button class="px-stack-lg py-stack-sm bg-transparent border border-slate-700 text-on-surface-variant rounded-lg font-semibold flex items-center gap-2 hover:bg-slate-900 transition-all">
+<span class="material-symbols-outlined text-lg">description</span>
+                            View Docs
+                        </button>
+</div>
+</section>
+<!-- QR Code & Quick Links (Sidebar) -->
+<section class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Hosted Page Link -->
+<div class="glass-panel rounded-2xl p-stack-lg h-full flex flex-col">
+<h3 class="font-h3 text-h3 text-white mb-unit">Hosted Page</h3>
+<p class="text-on-surface-variant text-sm mb-stack-md">A clean, focused environment for direct agent interactions.</p>
+<div class="mb-stack-lg flex-grow">
+<div class="w-full aspect-square bg-white p-6 rounded-xl flex items-center justify-center relative overflow-hidden">
+<!-- QR Placeholder style -->
+<img alt="QR Code" class="w-full h-full object-contain mix-blend-multiply opacity-90" data-alt="A clean, minimalist QR code centered on a stark white background. The image is professional and sharp, intended for a high-end tech dashboard. The lighting is flat and uniform to ensure maximum readability and clarity, reflecting a precise and engineering-focused aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG1llAsAlLDo4foA8ZTGydv4xo-3bXGuS6SZAfcg0Y5mOI8pgCJ_5xLdSaxe5lfJDxWDtUQjnVJ5yylt0XMoKWPpVAZxJmCS6UGV8mY-isPxyVPjmLGM7rSU1C8EM0n9VcZ2-xpFZoub6ZgZCQc8rkpCTSxSQ0R0atfooMm-J-41Zr2nKEU-GwEkq2f2360WRsHtRNzx4bPhHX4mvRPx1_xgPhbg3xJNmuouhGVKq_yrLFgi2mpUhs6GoW5oc2UfzXoeg6xCB5FAMA"/>
+</div>
+</div>
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2 p-3 bg-slate-950 rounded-lg border border-slate-800">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">link</span>
+<span class="text-xs text-on-surface-variant truncate">https://fitoagents.com/a/business-name</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-3 bg-slate-900 border border-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                                    Copy Link
+                                </button>
+<button class="py-2.5 px-3 bg-slate-900 border border-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                                    QR Code
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- WordPress Plugin Setup (Full Width Bottom) -->
+<section class="col-span-12 glass-panel rounded-2xl p-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div>
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<img alt="WordPress Logo" class="w-10 h-10 rounded-lg" data-alt="A sharp, minimalist icon of the WordPress logo rendered in a sleek, high-end metallic finish. The background is a dark, sophisticated navy blue with subtle micro-gradients. The lighting is focused, casting a soft glow that highlights the emblem's clean curves, fitting a professional enterprise dashboard style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZQ-R4s5EpazVDDclS6oUziqZO9xJXgfBhnSBzLcZoe2SFmoVNZBIrIdCvVceLQx4P0mCxQ37H67lyOaDva-sxmM0r7P2CO85HqHSGBLdRxC5THqT0j-TRytvXPKFb8nollKuHnAYAfDqAzZ8Hwr3fmElMp31mJuTLEvcWqeyQ6kOq98nGWqLp-zZa3etLRDGNZRxPLh1lZLIUbhbONd5cz97aHj74M_ugu0s5L7KeQeo3zwT92TnfKsG3HIfppsooLJFAqmVvwra6"/>
+<h3 class="font-h3 text-h3 text-white">WordPress Plugin Setup</h3>
+</div>
+<p class="text-on-surface-variant font-body-md mb-stack-lg">
+                                Seamlessly integrate Fito Agents into your WordPress site without writing a single line of code. Simply download the plugin and paste your unique API credentials.
+                            </p>
+<ul class="space-y-stack-sm mb-stack-lg">
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-400 text-lg" data-weight="fill">check_circle</span>
+                                    Automatic layout matching
+                                </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-400 text-lg" data-weight="fill">check_circle</span>
+                                    Zero-latency script loading
+                                </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-400 text-lg" data-weight="fill">check_circle</span>
+                                    Shortcode &amp; Widget support
+                                </li>
+</ul>
+<button class="px-stack-lg py-stack-md bg-transparent border-2 border-secondary-container text-secondary text-sm font-bold uppercase tracking-widest rounded-lg hover:bg-secondary-container hover:text-white transition-all">
+                                Download Plugin v1.4.2
+                            </button>
+</div>
+<!-- Settings Preview Panel -->
+<div class="bg-surface-container-lowest rounded-xl border border-slate-800 p-stack-md overflow-hidden shadow-2xl">
+<div class="flex items-center gap-2 mb-stack-md border-b border-slate-800 pb-stack-sm">
+<div class="w-3 h-3 rounded-full bg-error-container/40"></div>
+<div class="w-3 h-3 rounded-full bg-on-tertiary-fixed-variant/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container/40"></div>
+<span class="text-[10px] text-slate-500 font-mono ml-2">WP Admin &gt; Fito Settings</span>
+</div>
+<div class="space-y-stack-md opacity-80">
+<div>
+<label class="font-label-caps text-on-surface-variant mb-2 block">AGENT API KEY</label>
+<div class="w-full h-10 bg-slate-900 rounded border border-slate-700 flex items-center px-3">
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="font-label-caps text-on-surface-variant mb-2 block">WIDGET POSITION</label>
+<div class="w-full h-10 bg-slate-900 rounded border border-slate-700 flex items-center px-3 text-xs text-white">
+                                            Bottom Right
+                                        </div>
+</div>
+<div>
+<label class="font-label-caps text-on-surface-variant mb-2 block">AUTOLOAD</label>
+<div class="w-full h-10 flex items-center gap-2">
+<div class="w-10 h-5 bg-secondary-container rounded-full flex items-center justify-end px-1">
+<div class="w-3 h-3 bg-white rounded-full"></div>
+</div>
+<span class="text-xs text-on-surface-variant">Enabled</span>
+</div>
+</div>
+</div>
+<div class="w-full h-8 bg-secondary-container/20 border border-secondary-container/40 rounded flex items-center justify-center text-[10px] font-bold text-secondary uppercase tracking-widest">
+                                    Save WordPress Configuration
+                                </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center border-t border-slate-900 bg-slate-950 font-space-grotesk text-xs uppercase tracking-widest">
+<div class="mb-stack-md md:mb-0">
+<span class="text-lg font-bold text-white tracking-tight">Fito Agents</span>
+<p class="text-slate-500 mt-2">© 2024 Fito Agents AI. Intelligence Redefined.</p>
+</div>
+<div class="flex gap-stack-lg text-slate-500">
+<a class="hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-emerald-400 transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-emerald-400 transition-colors" href="#">Security</a>
+<a class="hover:text-emerald-400 transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-inter: var(--font-inter), "Inter", sans-serif;
+  --font-space-grotesk: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+
+  /* Colors - Stitch / Material 3 Style */
+  --color-on-surface-variant: #c6c6cb;
+  --color-on-secondary-container: #e4e7ff;
+  --color-surface-container: #1d2022;
+  --color-surface-container-lowest: #0b0f10;
+  --color-on-error-container: #ffdad6;
+  --color-on-tertiary-fixed-variant: #005236;
+  --color-surface-variant: #323537;
+  --color-on-secondary-fixed: #001551;
+  --color-surface-container-highest: #323537;
+  --color-surface-container-low: #191c1e;
+  --color-background: #101415;
+  --color-tertiary: #4edea3;
+  --color-on-primary: #2d3137;
+  --color-inverse-surface: #e0e3e5;
+  --color-primary: #c3c6cf;
+  --color-error-container: #93000a;
+  --color-on-tertiary: #003824;
+  --color-on-surface: #e0e3e5;
+  --color-primary-fixed: #dfe2eb;
+  --color-outline: #8f9095;
+  --color-on-error: #690005;
+  --color-tertiary-fixed-dim: #4edea3;
+  --color-tertiary-container: #001108;
+  --color-inverse-on-surface: #2d3133;
+  --color-surface-bright: #363a3b;
+  --color-secondary: #b6c4ff;
+  --color-surface-dim: #101415;
+  --color-secondary-container: #0356ff;
+  --color-primary-fixed-dim: #c3c6cf;
+  --color-primary-container: #0a0e14;
+  --color-on-primary-fixed: #181c22;
+  --color-secondary-fixed: #dce1ff;
+  --color-on-background: #e0e3e5;
+  --color-on-secondary-fixed-variant: #0039b3;
+  --color-surface-container-high: #272a2c;
+  --color-error: #ffb4ab;
+  --color-on-tertiary-fixed: #002113;
+  --color-outline-variant: #45474b;
+  --color-tertiary-fixed: #6ffbbe;
+  --color-on-primary-fixed-variant: #43474e;
+  --color-secondary-fixed-dim: #b6c4ff;
+  --color-surface: #101415;
+  --color-on-secondary: #002780;
+  --color-inverse-primary: #5b5e66;
+  --color-surface-tint: #c3c6cf;
+  --color-on-primary-container: #787b83;
+  --color-on-tertiary-container: #008c60;
+  
+  /* Brand Semantic Colors */
+  --color-fito-navy: #0b0f10;
+  --color-fito-blue: #0356ff;
+  --color-fito-green: #4edea3;
+
+  /* Spacing */
+  --spacing-gutter: 24px;
+
+  /* Border Radius */
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+}
+
+:root {
+  --background: #101415;
+  --foreground: #e0e3e5;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 41, 59, 0.5);
+  }
+
+  .ambient-glow {
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .rim-light {
+    border-top: 0.5px solid rgba(182, 196, 255, 0.2);
+  }
+
+  .btn-primary {
+    @apply bg-secondary-container text-on-secondary-container px-6 py-2 rounded-lg hover:brightness-110 active:scale-95 duration-150 transition-all font-heading font-medium;
+  }
+
+  .btn-secondary {
+    @apply border border-outline-variant text-on-surface px-6 py-2 rounded-lg hover:bg-surface-variant active:scale-95 transition-all font-heading font-medium;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-b from-secondary-container to-blue-700 text-on-secondary-container px-8 py-4 rounded-xl font-heading font-medium hover:brightness-110 active:scale-95 transition-all shadow-lg;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #323537;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #45474b;
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c6c6cb",
+                        "on-secondary-container": "#e4e7ff",
+                        "surface-container": "#1d2022",
+                        "surface-container-lowest": "#0b0f10",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#323537",
+                        "on-secondary-fixed": "#001551",
+                        "surface-container-highest": "#323537",
+                        "surface-container-low": "#191c1e",
+                        "background": "#101415",
+                        "tertiary": "#4edea3",
+                        "on-primary": "#2d3137",
+                        "inverse-surface": "#e0e3e5",
+                        "primary": "#c3c6cf",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#003824",
+                        "on-surface": "#e0e3e5",
+                        "primary-fixed": "#dfe2eb",
+                        "outline": "#8f9095",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#001108",
+                        "inverse-on-surface": "#2d3133",
+                        "surface-bright": "#363a3b",
+                        "secondary": "#b6c4ff",
+                        "surface-dim": "#101415",
+                        "secondary-container": "#0356ff",
+                        "primary-fixed-dim": "#c3c6cf",
+                        "primary-container": "#0a0e14",
+                        "on-primary-fixed": "#181c22",
+                        "secondary-fixed": "#dce1ff",
+                        "on-background": "#e0e3e5",
+                        "on-secondary-fixed-variant": "#0039b3",
+                        "surface-container-high": "#272a2c",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#002113",
+                        "outline-variant": "#45474b",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#43474e",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface": "#101415",
+                        "on-secondary": "#002780",
+                        "inverse-primary": "#5b5e66",
+                        "surface-tint": "#c3c6cf",
+                        "on-primary-container": "#787b83",
+                        "on-tertiary-container": "#008c60"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin-page": "40px",
+                        "container-max": "1440px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "h2": ["Space Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #020617; }
+        .glass-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: #0356ff;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(3, 86, 255, 0.1) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background selection:bg-secondary-container selection:text-white">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-xl shadow-black/50 font-space-grotesk font-medium">
+<div class="text-2xl font-black text-white">Fito Agents</div>
+<div class="hidden md:flex items-center space-gap-8 gap-8">
+<a class="text-slate-300 hover:text-blue-400 transition-all" href="#">How it Works</a>
+<a class="text-blue-400 border-b-2 border-blue-500 pb-1" href="#">Agent Types</a>
+<a class="text-slate-300 hover:text-blue-400 transition-all" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-300 hover:text-blue-400 active:scale-95 duration-150">Login</button>
+<button class="bg-secondary-container text-white px-5 py-2 rounded-lg font-bold hover:brightness-125 active:scale-95 duration-150">Get Started</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="text-center mb-24 relative">
+<div class="absolute inset-0 hero-gradient -z-10"></div>
+<h1 class="font-h1 text-h1 text-white mb-6">Autonomous Intelligence for Every Need</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Explore our specialized agent archetypes designed to scale your operations, enhance customer experience, and automate complex technical workflows.
+            </p>
+</section>
+<!-- Bento Grid / Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Website AI Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:bg-secondary-container group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="language">language</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Website AI Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    A dynamic digital concierge that navigates your site alongside users, answering context-specific questions and guiding them through complex funnels in real-time.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2: Customer Support Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Customer Support Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    Resolution-focused intelligence capable of handling Tier-1 and Tier-2 support tickets, processing returns, and troubleshooting technical issues 24/7 with human-like empathy.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Card 3: Sales & Lead Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:bg-secondary-container group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="insights">insights</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Sales &amp; Lead Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    Hyper-proactive agent that identifies intent, qualifies high-value prospects, and initiates personalized outreach to maximize conversion rates across all channels.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Card 4: Booking Request Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="calendar_month">calendar_month</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Booking Request Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    Seamlessly manages calendars, handles rescheduling requests, and coordinates multi-party meetings while ensuring zero scheduling conflicts with enterprise-level precision.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Card 5: Document Assistant Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:bg-secondary-container group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="description">description</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">Document Assistant Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    Parses complex PDFs, legal documents, and spreadsheets to extract actionable data points, summarize key findings, and answer queries based on internal knowledge bases.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Card 6: App Assistant Agent -->
+<div class="glass-card rounded-2xl p-8 flex flex-col h-full group">
+<div class="mb-6 h-12 w-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-3">App Assistant Agent</h3>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                    An embedded AI companion for your SaaS platform that helps users perform complex tasks via natural language commands, reducing time-to-value for new customers.
+                </p>
+<div class="flex items-center justify-between">
+<button class="font-label-caps text-label-caps text-secondary-container hover:underline tracking-widest uppercase">Learn More</button>
+<span class="material-symbols-outlined text-on-primary-container" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<section class="mt-32 p-12 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-xl">
+<h2 class="font-h2 text-h2 text-white mb-4">Can't find the right agent?</h2>
+<p class="font-body-md text-on-surface-variant">
+                    Our team specializes in building custom LLM-powered solutions tailored to unique enterprise workflows and proprietary data structures.
+                </p>
+</div>
+<div class="flex gap-4">
+<button class="bg-secondary-container text-white px-8 py-4 rounded-xl font-bold hover:brightness-125 transition-all">Talk to Sales</button>
+<button class="border border-slate-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all">View API Docs</button>
+</div>
+</section>
+<!-- Feature Spotlight (Asymmetric Layout) -->
+<section class="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A high-end, futuristic dashboard interface for managing AI agents. The screen shows real-time data streams, neural network visualizations, and active agent status indicators in a palette of deep slate and electric blue. The aesthetic is clean, professional, and sophisticated, reflecting a cutting-edge enterprise technology platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwkfkLWVJXISMy3AmO0y8hSdLws-1R9Lf5jgHB_aOeNnZBum6EWCHHqeWXrkUdV9I6iaZSGzX_45davR9JUtITp01nrFlF3rMn0F7elkBP1jRX99PuOansxFY-DshHpxwv-X-9HtGPHQb-fMBMZor3hxJf_PnH7heLJc5ZcrYjhk1rlbjlhwhEUk12Cs3kxP-M8wOLaQT1xeCCEOsGF2MQSyWhHErci9upSH1HnWRPI-IdNWFwADA9s_ioICa25cdbNUVMX7DTgeDD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary-container tracking-widest uppercase mb-4 block">Unified Control</span>
+<h2 class="font-h2 text-h2 text-white mb-6">One Dashboard. Total Orchestration.</h2>
+<p class="font-body-md text-on-surface-variant mb-8">
+                    Regardless of the agent type, manage all deployments through our centralized Enterprise Fleet Command. Monitor latency, tokens, cost, and accuracy across every instance with surgical precision.
+                </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-white">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Zero-latency deployment to edge nodes</span>
+</li>
+<li class="flex items-center gap-3 text-white">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>SOC2 Type II Compliant architecture</span>
+</li>
+<li class="flex items-center gap-3 text-white">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Proprietary Fine-tuning for domain expertise</span>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center bg-slate-950 border-t border-slate-900 font-space-grotesk text-xs uppercase tracking-widest">
+<div class="mb-8 md:mb-0">
+<div class="text-lg font-bold text-white mb-2">Fito Agents</div>
+<div class="text-slate-500">© 2024 Fito Agents AI. Intelligence Redefined.</div>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Security</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</body></html>

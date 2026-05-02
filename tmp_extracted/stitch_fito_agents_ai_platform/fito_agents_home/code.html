@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fito Agents | Custom AI Agents for Modern Businesses</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c6c6cb",
+                    "on-secondary-container": "#e4e7ff",
+                    "surface-container": "#1d2022",
+                    "surface-container-lowest": "#0b0f10",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-variant": "#323537",
+                    "on-secondary-fixed": "#001551",
+                    "surface-container-highest": "#323537",
+                    "surface-container-low": "#191c1e",
+                    "background": "#101415",
+                    "tertiary": "#4edea3",
+                    "on-primary": "#2d3137",
+                    "inverse-surface": "#e0e3e5",
+                    "primary": "#c3c6cf",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#003824",
+                    "on-surface": "#e0e3e5",
+                    "primary-fixed": "#dfe2eb",
+                    "outline": "#8f9095",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#001108",
+                    "inverse-on-surface": "#2d3133",
+                    "surface-bright": "#363a3b",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#101415",
+                    "secondary-container": "#0356ff",
+                    "primary-fixed-dim": "#c3c6cf",
+                    "primary-container": "#0a0e14",
+                    "on-primary-fixed": "#181c22",
+                    "secondary-fixed": "#dce1ff",
+                    "on-background": "#e0e3e5",
+                    "on-secondary-fixed-variant": "#0039b3",
+                    "surface-container-high": "#272a2c",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#002113",
+                    "outline-variant": "#45474b",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#43474e",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "surface": "#101415",
+                    "on-secondary": "#002780",
+                    "inverse-primary": "#5b5e66",
+                    "surface-tint": "#c3c6cf",
+                    "on-primary-container": "#787b83",
+                    "on-tertiary-container": "#008c60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "margin-page": "40px",
+                    "container-max": "1440px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "h2": ["Space Grotesk"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.5);
+        }
+        .ambient-glow {
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .rim-light {
+            border-top: 0.5px solid rgba(182, 196, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-xl shadow-black/50">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-white font-h2">Fito Agents</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-space-grotesk font-medium text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">How it Works</a>
+<a class="font-space-grotesk font-medium text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">Agent Types</a>
+<a class="font-space-grotesk font-medium text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-space-grotesk font-medium text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150 px-4 py-2">Login</button>
+<button class="bg-secondary-container text-on-secondary-container font-space-grotesk font-medium px-6 py-2 rounded-lg hover:brightness-110 active:scale-95 duration-150 transition-all">Get Started</button>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center mb-40">
+<div class="space-y-stack-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">New: V2 Autonomous Agents</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface">Custom AI Agents for <span class="text-secondary">Modern Businesses</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Fito Agents helps businesses launch AI-powered digital workers that answer questions, capture leads, support customers, and automate daily tasks.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-gradient-to-b from-secondary-container to-blue-700 text-on-secondary-container px-8 py-4 rounded-xl font-h3 text-body-md hover:brightness-110 active:scale-95 transition-all shadow-lg">Get Your AI Agent</button>
+<button class="border border-outline-variant text-on-surface px-8 py-4 rounded-xl font-h3 text-body-md hover:bg-surface-variant active:scale-95 transition-all">View Pricing</button>
+</div>
+</div>
+<div class="relative mt-12 lg:mt-0">
+<!-- Dashboard Mockup -->
+<div class="glass-panel rounded-2xl p-6 rim-light ambient-glow relative z-10">
+<div class="flex justify-between items-center mb-6">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-on-tertiary-fixed-variant"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">Live Activity</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">public</span>
+<div>
+<p class="text-on-surface font-medium">Website Agent</p>
+<p class="text-xs text-on-surface-variant">Active on fitofinance.com</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-tertiary/10 text-tertiary text-xs">ONLINE</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<div>
+<p class="text-on-surface font-medium">Lead Captured</p>
+<p class="text-xs text-on-surface-variant">james.w@enterprise.io</p>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant">2m ago</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant flex items-center gap-3">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<div>
+<p class="text-on-surface font-medium">24/7 Support</p>
+<p class="text-xs text-on-surface-variant">Resolved 142 tickets today</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background Elements -->
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/20 rounded-full blur-[80px] -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-tertiary/10 rounded-full blur-[80px] -z-10"></div>
+</div>
+</section>
+<!-- What it does (Bento Grid) -->
+<section class="max-w-7xl mx-auto px-gutter mb-40">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 text-on-surface mb-4">Autonomous Intelligence for Every Workflow</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Deploy specialized agents that don't just chat, but execute meaningful work within your existing business stack.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-panel rounded-2xl p-8 rim-light hover:border-secondary/50 transition-colors">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Cognitive Customer Context</h3>
+<p class="text-on-surface-variant mb-6">Our agents ingest your documentation, website data, and past interactions to provide responses that feel human and perfectly accurate to your brand voice.</p>
+<img class="w-full h-48 object-cover rounded-xl border border-outline-variant" data-alt="A futuristic data visualization dashboard with clean neon lines and dark navy aesthetics representing complex neural networks and data processing nodes. The lighting is low and sophisticated, emphasizing a high-tech corporate intelligence environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzVPx5oA32UQoUldCRN51iGpVNy78g_tEckeeOsqTYq_tnX0pzzEX1nMi5tPybQSVdwoeaOZOYp4nxKhgn3dEXe-j67VbVeiV3516JdPU6i4xUCiITlEPAsQDFaShZyxs_ibFDRdkFOit2eme1JXtPMZ2x1HTtusdEVERPYUMyALqOY1Ipibn0tmwwAjYVreMbtpEafCW9_Sf4nSNj8uZ1G920e0NlJI1Tr3_oMeeBlpb6hzPpbwyHCvxazeUah5N6VJQERFLje62j"/>
+</div>
+<div class="glass-panel rounded-2xl p-8 rim-light hover:border-secondary/50 transition-colors flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Enterprise Security</h3>
+<p class="text-on-surface-variant">SOC2 Type II compliant with end-to-end encryption for all enterprise data handling.</p>
+</div>
+<div class="mt-8 flex justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-8xl opacity-20">lock</span>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-8 rim-light hover:border-secondary/50 transition-colors">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">integration_instructions</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Seamless Stack Integration</h3>
+<p class="text-on-surface-variant">Connect with HubSpot, Salesforce, Slack, and 2,000+ apps via Zapier or native API.</p>
+</div>
+<div class="md:col-span-2 glass-panel rounded-2xl p-8 rim-light hover:border-secondary/50 transition-colors flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Lead Conversion Engine</h3>
+<p class="text-on-surface-variant">Don't just answer questions. Our agents are trained to identify intent, qualify leads, and book meetings directly into your calendar while the interest is hot.</p>
+</div>
+<div class="w-full md:w-1/3 bg-surface-container-highest p-4 rounded-xl border border-outline-variant">
+<div class="text-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-1">Conversion Rate</p>
+<p class="text-4xl font-h2 text-tertiary">+34%</p>
+<div class="h-1 w-full bg-surface-variant rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-tertiary w-3/4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Businesses Need AI Agents -->
+<section class="max-w-7xl mx-auto px-gutter mb-40 bg-surface-container-low py-24 rounded-3xl border border-outline-variant">
+<div class="grid lg:grid-cols-2 gap-stack-lg items-center px-12">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface mb-8">The Cost of Waiting is High</h2>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<h4 class="font-h3 text-body-md font-bold text-on-surface">Instantly Available</h4>
+<p class="text-on-surface-variant">Your customers don't want to wait 24 hours for an email. AI agents respond in &lt; 1 second, 24/7/365.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h4 class="font-h3 text-body-md font-bold text-on-surface">Drastically Lower Overhead</h4>
+<p class="text-on-surface-variant">Handle 1,000 concurrent conversations for the cost of a single cup of coffee per day.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-on-secondary-fixed-variant/10 flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="font-h3 text-body-md font-bold text-on-surface">Unlimited Scalability</h4>
+<p class="text-on-surface-variant">Scale from 10 to 10,000 customers instantly without hiring, training, or management headaches.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<img class="rounded-2xl ambient-glow rim-light border border-outline-variant" data-alt="A sleek corporate meeting room at night with a large glass window overlooking a futuristic city skyline. In the foreground, a high-resolution tablet displays real-time AI performance analytics with glowing blue and green data points. The atmosphere is professional, quiet, and exudes a sense of technological mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR3up1ImTiYXRNlEaDYnexnLZicPWyL96nh_F5AdHTl9iqKz_HYJpcfFQmvRlO3D5A76dXk2EclhbZUovXZ60CVeDCeh0SiiBGUxv7rvQuhhLsELnxmUh2BeejZD9WHDbWHCdLBjgzRxC9sx5tfCvGfD_4A4zSRh9aGjFP5sKfBuLUUVfk_2F45YXYo7VStuuPYOIYqD2LNJu6JaIWw7FwWFQ3Wuxj_eblAQrJFAOt7ThicYtWqZpQxSK6grr_DIjnR02y23i-8Mgh"/>
+</div>
+</div>
+</section>
+<!-- Agent Types -->
+<section class="max-w-7xl mx-auto px-gutter mb-40">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 text-on-surface mb-4">Purpose-Built for Every Role</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Our pre-configured agent blueprints allow you to go live in minutes, not months.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Agent 1 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center mb-6 text-on-secondary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">language</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">Website Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Inbound assistant that navigates your site with users, answers product questions, and captures visitor info.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+<!-- Agent 2 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-tertiary/20 flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">support</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">Support Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Expert technical support that solves user problems by referencing your knowledge base and documentation.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+<!-- Agent 3 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-on-secondary-fixed-variant/20 flex items-center justify-center mb-6 text-on-secondary-fixed-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">point_of_sale</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">Sales Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Proactive outbound and inbound sales assistant trained to qualify leads and push deals through the funnel.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+<!-- Agent 4 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">Booking Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Automated scheduling for meetings, demos, or appointments with full calendar synchronization.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+<!-- Agent 5 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-on-tertiary-fixed-variant/20 flex items-center justify-center mb-6 text-on-tertiary-fixed-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">description</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">Document Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Upload PDFs or CSVs and let the agent synthesize information, extract data, or answer complex queries.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+<!-- Agent 6 -->
+<div class="glass-panel p-8 rounded-2xl rim-light group hover:bg-slate-900 transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">apps</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-3">App Agent</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">A headless agent that lives inside your own application, performing actions for users via your own API.</p>
+<a class="text-secondary text-sm font-medium flex items-center gap-2" href="#">Learn More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+</section>
+<!-- Pricing Preview -->
+<section class="max-w-7xl mx-auto px-gutter mb-40">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 text-on-surface mb-4">Scalable Plans for Scaling Teams</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Free -->
+<div class="glass-panel p-8 rounded-2xl rim-light border-slate-800 flex flex-col">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Starter</p>
+<h3 class="text-3xl font-h2 text-on-surface mb-4">$0 <span class="text-sm font-normal text-on-surface-variant">/mo</span></h3>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> 1 AI Agent</li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> 100 Messages /mo</li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> Basic Chat Widget</li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-variant transition-all">Start Free</button>
+</div>
+<!-- Pro -->
+<div class="glass-panel p-8 rounded-2xl rim-light border-secondary shadow-2xl shadow-secondary/10 flex flex-col relative scale-105">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-secondary text-on-secondary-fixed text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+<p class="text-label-caps font-label-caps text-secondary uppercase mb-2">Pro Business</p>
+<h3 class="text-3xl font-h2 text-on-surface mb-4">$149 <span class="text-sm font-normal text-on-surface-variant">/mo</span></h3>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-secondary text-lg">check</span> 5 AI Agents</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-secondary text-lg">check</span> 5,000 Messages /mo</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-secondary text-lg">check</span> All Integrations</li>
+<li class="flex items-center gap-3 text-sm text-on-surface"><span class="material-symbols-outlined text-secondary text-lg">check</span> Custom Branding</li>
+</ul>
+<button class="w-full py-3 rounded-xl bg-secondary text-on-secondary-fixed font-bold hover:brightness-110 transition-all">Get Pro</button>
+</div>
+<!-- Enterprise -->
+<div class="glass-panel p-8 rounded-2xl rim-light border-slate-800 flex flex-col">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Enterprise</p>
+<h3 class="text-3xl font-h2 text-on-surface mb-4">Custom</h3>
+<ul class="space-y-4 mb-8 flex-1">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> Unlimited Agents</li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> Custom Training</li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-lg">check</span> Dedicated Support</li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-variant transition-all">Contact Sales</button>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-gutter mb-20">
+<div class="relative rounded-3xl overflow-hidden bg-slate-950 p-12 md:p-24 text-center border border-slate-800">
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary-container/20 to-transparent pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="font-h1 text-h1 text-on-surface mb-6">Ready to automate your growth?</h2>
+<p class="text-on-surface-variant text-body-lg max-w-2xl mx-auto mb-10">Join 2,500+ businesses who are saving thousands of hours every month with Fito Agents.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-10 py-5 rounded-xl font-h3 text-body-md hover:brightness-110 active:scale-95 transition-all">Get Your AI Agent Now</button>
+<button class="bg-white/5 backdrop-blur-sm border border-white/10 text-white px-10 py-5 rounded-xl font-h3 text-body-md hover:bg-white/10 active:scale-95 transition-all">Schedule Demo</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-slate-950 border-t border-slate-900 px-8 py-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+<div class="space-y-4">
+<span class="text-lg font-bold text-white font-h2">Fito Agents</span>
+<p class="text-slate-500 max-w-xs text-sm leading-relaxed">The future of business operations is autonomous. We build the intelligence that scales with you.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div class="space-y-4">
+<h4 class="text-white text-xs uppercase tracking-widest font-label-caps">Platform</h4>
+<ul class="space-y-2 text-slate-500 text-xs uppercase tracking-widest font-label-caps">
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Agents</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Integrations</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white text-xs uppercase tracking-widest font-label-caps">Legal</h4>
+<ul class="space-y-2 text-slate-500 text-xs uppercase tracking-widest font-label-caps">
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-emerald-400 transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-8 border-t border-slate-900 flex justify-between items-center">
+<p class="text-slate-500 text-xs uppercase tracking-widest font-label-caps">© 2024 Fito Agents AI. Intelligence Redefined.</p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-lg">brand_awareness</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+</div>
+</div>
+</footer>
+</body></html>

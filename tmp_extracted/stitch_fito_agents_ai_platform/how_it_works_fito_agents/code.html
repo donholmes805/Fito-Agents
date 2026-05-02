@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c6c6cb",
+                    "on-secondary-container": "#e4e7ff",
+                    "surface-container": "#1d2022",
+                    "surface-container-lowest": "#0b0f10",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-variant": "#323537",
+                    "on-secondary-fixed": "#001551",
+                    "surface-container-highest": "#323537",
+                    "surface-container-low": "#191c1e",
+                    "background": "#101415",
+                    "tertiary": "#4edea3",
+                    "on-primary": "#2d3137",
+                    "inverse-surface": "#e0e3e5",
+                    "primary": "#c3c6cf",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#003824",
+                    "on-surface": "#e0e3e5",
+                    "primary-fixed": "#dfe2eb",
+                    "outline": "#8f9095",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#001108",
+                    "inverse-on-surface": "#2d3133",
+                    "surface-bright": "#363a3b",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#101415",
+                    "secondary-container": "#0356ff",
+                    "primary-fixed-dim": "#c3c6cf",
+                    "primary-container": "#0a0e14",
+                    "on-primary-fixed": "#181c22",
+                    "secondary-fixed": "#dce1ff",
+                    "on-background": "#e0e3e5",
+                    "on-secondary-fixed-variant": "#0039b3",
+                    "surface-container-high": "#272a2c",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#002113",
+                    "outline-variant": "#45474b",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#43474e",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "surface": "#101415",
+                    "on-secondary": "#002780",
+                    "inverse-primary": "#5b5e66",
+                    "surface-tint": "#c3c6cf",
+                    "on-primary-container": "#787b83",
+                    "on-tertiary-container": "#008c60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "margin-page": "40px",
+                    "container-max": "1440px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "h2": ["Space Grotesk"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-xl shadow-black/50 font-space-grotesk font-medium">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-white">Fito Agents</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-blue-400 border-b-2 border-blue-500 pb-1 hover:text-blue-400 transition-all" href="#">How it Works</a>
+<a class="text-slate-300 hover:text-blue-400 transition-all" href="#">Agent Types</a>
+<a class="text-slate-300 hover:text-blue-400 transition-all" href="#">Pricing</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition-all active:scale-95">Login</button>
+<button class="px-5 py-2 rounded-lg bg-gradient-to-v from-secondary-container to-blue-700 text-white font-bold hover:brightness-110 active:scale-95 transition-all">Get Started</button>
+</div>
+</header>
+<main class="pt-32 pb-24 px-8 max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="text-center mb-24 max-w-3xl mx-auto">
+<span class="font-label-caps text-secondary-container tracking-widest uppercase mb-4 block">Process Blueprint</span>
+<h1 class="font-h1 text-h1 text-on-surface mb-6">Autonomous Intelligence in Four Minutes.</h1>
+<p class="font-body-lg text-on-surface-variant">Fito Agents streamlines the deployment of enterprise-grade AI. No complex coding required—just pure strategy and data-driven execution.</p>
+</section>
+<!-- Process Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg relative">
+<!-- Decorative Connector Line -->
+<div class="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-slate-800 to-transparent -translate-x-1/2"></div>
+<!-- Step 1 -->
+<div class="group relative md:pr-12 md:pb-24">
+<div class="glass-card rounded-2xl p-stack-lg transition-all duration-300 hover:translate-y-[-4px] hover:border-secondary-container/50">
+<div class="flex items-start justify-between mb-stack-md">
+<div class="w-16 h-16 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-4xl">business_center</span>
+</div>
+<span class="font-h2 text-h2 text-slate-800/50 group-hover:text-secondary-container/20 transition-colors">01</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-stack-sm">Create Your Business Profile</h3>
+<p class="text-on-surface-variant leading-relaxed">Establish your digital identity. Define your brand voice, industry parameters, and communication style to ensure your agent resonates with your target audience perfectly.</p>
+<div class="mt-8 rounded-lg overflow-hidden border border-slate-800 bg-slate-950">
+<img class="w-full h-48 object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A sophisticated dashboard interface showing business profile settings in a sleek dark mode aesthetic. The screen displays typography controls, brand color palettes, and corporate identity parameters with minimalist icons. The lighting is low-key with subtle blue glows highlighting active input fields, evoking a sense of high-end professional software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfwiHdDXO53_we8HPybn28m4fux_CtJcjtcJSYM34yyoYoptu-F0ed8IkmE8XjH_-6Bf17W8A2BnlADeiqAHffbxRjTfjhDwdTIp4NLfklMnWuR3joP3Hp7EhCDqqm8z_vecH7z5PsDN3TTCHM_QwJtxX_N3l4rUtFPZHHFwFcvgPCTvwYTbo96L6H9fOFysyUpmSQvE-KE9o5yO9BNb39g9mZsh0pktBn4athhVPhHecMg6TAakrVmOTcO1BDiWsSckmEHwk82wo-"/>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group relative md:pl-12 md:pt-24 md:pb-24">
+<div class="glass-card rounded-2xl p-stack-lg transition-all duration-300 hover:translate-y-[-4px] hover:border-secondary-container/50">
+<div class="flex items-start justify-between mb-stack-md">
+<div class="w-16 h-16 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-4xl">smart_toy</span>
+</div>
+<span class="font-h2 text-h2 text-slate-800/50 group-hover:text-secondary-container/20 transition-colors">02</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-stack-sm">Build Your AI Agent</h3>
+<p class="text-on-surface-variant leading-relaxed">Customize the persona and capabilities of your agent. Select specialized logic modules and emotional intelligence levels that align with your specific operational needs.</p>
+<div class="mt-8 rounded-lg overflow-hidden border border-slate-800 bg-slate-950">
+<img class="w-full h-48 object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A futuristic AI configuration screen featuring a crystalline human-like digital bust. The interface shows various skill modules and logic branches being connected by glowing electric blue lines. The background is a deep navy surface black with subtle glassmorphic panels and precise data visualizations, reflecting a state-of-the-art technological environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvuhfuYav7A4vsavxu7VrDoT_es4TfqvFzR2uk5z0R3Gc8k_WK_7yCl3K9DmJkICeabpi7QzjhP87XZVvCcp3giAq_60jkbzM8VHgWi-n2oeG_QXW_DmznEvydGyLOvUx7D-lbMo9GY7U0TmnVSpYtacjpUiz5Q223boz0ZmBJOYylwYZyLCkbpw6Dy-H981O1g-ODRgsyc7aO33KOuVVrugm5lUeLwsP8SviFVLpJBSMxFDIJ2AHGt3zJJ2WuRcMjA-uGaMWgblz8"/>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group relative md:pr-12 md:pb-24">
+<div class="glass-card rounded-2xl p-stack-lg transition-all duration-300 hover:translate-y-[-4px] hover:border-secondary-container/50">
+<div class="flex items-start justify-between mb-stack-md">
+<div class="w-16 h-16 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-4xl">database</span>
+</div>
+<span class="font-h2 text-h2 text-slate-800/50 group-hover:text-secondary-container/20 transition-colors">03</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-stack-sm">Add Knowledge &amp; Services</h3>
+<p class="text-on-surface-variant leading-relaxed">Upload documents, sync your FAQ databases, and define your service catalog. Your agent learns your pricing structures and business logic in seconds.</p>
+<div class="mt-8 grid grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container">description</span>
+<span class="font-label-caps text-on-surface">Knowledge Base</span>
+</div>
+<div class="p-4 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">quiz</span>
+<span class="font-label-caps text-on-surface">Dynamic FAQs</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="group relative md:pl-12 md:pt-24">
+<div class="glass-card rounded-2xl p-stack-lg transition-all duration-300 hover:translate-y-[-4px] hover:border-secondary-container/50">
+<div class="flex items-start justify-between mb-stack-md">
+<div class="w-16 h-16 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-4xl">share</span>
+</div>
+<span class="font-h2 text-h2 text-slate-800/50 group-hover:text-secondary-container/20 transition-colors">04</span>
+</div>
+<h3 class="font-h3 text-h3 text-white mb-stack-sm">Embed or Share Link</h3>
+<p class="text-on-surface-variant leading-relaxed">Launch your agent with a single line of code on your website, or use our high-performance hosted link to start generating leads instantly across any platform.</p>
+<div class="mt-8 p-4 rounded-lg bg-slate-950 border border-slate-800 font-mono text-xs text-secondary">
+                        &lt;script src="https://cdn.fito.ai/v1/agent.js" data-id="ABC-123"&gt;&lt;/script&gt;
+                    </div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<section class="mt-32 p-stack-lg rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(3,86,255,0.15),transparent)]"></div>
+<div class="relative z-10">
+<h2 class="font-h2 text-h2 text-white mb-6">Ready to Redefine Your Workflow?</h2>
+<p class="text-on-surface-variant mb-8 max-w-xl mx-auto">Join 500+ enterprises automating their customer interactions with Fito Agents AI.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="px-8 py-4 rounded-xl bg-secondary-container text-white font-bold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-secondary-container/20">Get Started Now</button>
+<button class="px-8 py-4 rounded-xl border border-slate-700 text-white font-bold hover:bg-slate-800 active:scale-95 transition-all">Book Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center bg-slate-950 border-t border-slate-900 font-space-grotesk text-xs uppercase tracking-widest">
+<div class="flex flex-col items-center md:items-start gap-4 mb-8 md:mb-0">
+<span class="text-lg font-bold text-white">Fito Agents</span>
+<span class="text-slate-500">© 2024 Fito Agents AI. Intelligence Redefined.</span>
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Security</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">API Docs</a>
+</nav>
+</footer>
+</body></html>

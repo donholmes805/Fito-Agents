@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conversation Logs | Fito Agents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c6c6cb",
+                        "on-secondary-container": "#e4e7ff",
+                        "surface-container": "#1d2022",
+                        "surface-container-lowest": "#0b0f10",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#323537",
+                        "on-secondary-fixed": "#001551",
+                        "surface-container-highest": "#323537",
+                        "surface-container-low": "#191c1e",
+                        "background": "#101415",
+                        "tertiary": "#4edea3",
+                        "on-primary": "#2d3137",
+                        "inverse-surface": "#e0e3e5",
+                        "primary": "#c3c6cf",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#003824",
+                        "on-surface": "#e0e3e5",
+                        "primary-fixed": "#dfe2eb",
+                        "outline": "#8f9095",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#001108",
+                        "inverse-on-surface": "#2d3133",
+                        "surface-bright": "#363a3b",
+                        "secondary": "#b6c4ff",
+                        "surface-dim": "#101415",
+                        "secondary-container": "#0356ff",
+                        "primary-fixed-dim": "#c3c6cf",
+                        "primary-container": "#0a0e14",
+                        "on-primary-fixed": "#181c22",
+                        "secondary-fixed": "#dce1ff",
+                        "on-background": "#e0e3e5",
+                        "on-secondary-fixed-variant": "#0039b3",
+                        "surface-container-high": "#272a2c",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#002113",
+                        "outline-variant": "#45474b",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#43474e",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface": "#101415",
+                        "on-secondary": "#002780",
+                        "inverse-primary": "#5b5e66",
+                        "surface-tint": "#c3c6cf",
+                        "on-primary-container": "#787b83",
+                        "on-tertiary-container": "#008c60"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin-page": "40px",
+                        "container-max": "1440px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "h2": ["Space Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #0F172A; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #1E293B; }
+        .glass-panel { backdrop-filter: blur(12px); border-top: 0.5px solid rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden">
+<!-- Sidebar Shell -->
+<nav class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r border-slate-800 bg-slate-950 font-space-grotesk text-sm antialiased z-40">
+<div class="p-stack-lg">
+<h1 class="text-xl font-bold tracking-tight text-white mb-1">Fito Agents</h1>
+<p class="text-slate-500 text-xs">Enterprise Plan</p>
+</div>
+<div class="flex-1 px-stack-sm space-y-unit">
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out text-slate-400 hover:text-slate-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out text-slate-400 hover:text-slate-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+                Agent Fleet
+            </a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out text-slate-400 hover:text-slate-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">database</span>
+                Knowledge Base
+            </a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out bg-blue-600/10 text-blue-400 border-r-2 border-blue-500" href="#">
+<span class="material-symbols-outlined">group</span>
+                Leads
+            </a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out text-slate-400 hover:text-slate-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">insights</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-sm rounded-lg duration-200 ease-in-out text-slate-400 hover:text-slate-200 hover:bg-slate-900" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+<div class="p-stack-lg border-t border-slate-800 space-y-stack-sm">
+<a class="flex items-center gap-stack-md text-slate-400 hover:text-slate-200" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-stack-md text-slate-400 hover:text-slate-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+                Account
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col h-screen">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-gutter border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+<div class="flex items-center gap-stack-lg">
+<h2 class="font-h3 text-h3 text-white">Conversation Logs</h2>
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-slate-500">
+<span class="material-symbols-outlined text-sm">search</span>
+</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-secondary outline-none w-80 text-on-surface" placeholder="Search conversations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit px-stack-md py-2 bg-surface-container-high text-on-surface rounded-lg text-sm border border-outline-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                    Filter
+                </button>
+<div class="h-8 w-px bg-slate-800 mx-stack-sm"></div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-white">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-white">settings</button>
+</div>
+</header>
+<!-- Split View Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left: Conversation List -->
+<section class="w-96 border-r border-slate-800 flex flex-col bg-slate-950">
+<div class="p-stack-md border-b border-slate-800 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active Logs (124)</span>
+<span class="text-xs text-blue-500 font-medium">Real-time</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Chat Item: Active -->
+<div class="p-stack-md bg-blue-600/5 border-l-2 border-blue-500 cursor-pointer transition-colors hover:bg-slate-900">
+<div class="flex justify-between items-start mb-unit">
+<h4 class="font-body-md font-semibold text-white">Alex Thompson</h4>
+<span class="text-[10px] text-slate-500">2m ago</span>
+</div>
+<p class="text-sm text-slate-400 line-clamp-1 mb-stack-sm">Can you explain the pricing tiers for the Enterprise plan?</p>
+<div class="flex gap-stack-sm">
+<span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold tracking-wide uppercase">Lead Captured</span>
+</div>
+</div>
+<!-- Chat Item: Normal -->
+<div class="p-stack-md border-b border-slate-900 cursor-pointer transition-colors hover:bg-slate-900">
+<div class="flex justify-between items-start mb-unit">
+<h4 class="font-body-md font-semibold text-slate-300">Marcus Wright</h4>
+<span class="text-[10px] text-slate-500">15m ago</span>
+</div>
+<p class="text-sm text-slate-500 line-clamp-1 mb-stack-sm">The integration script isn't loading on my React dev server.</p>
+<div class="flex gap-stack-sm">
+<span class="px-2 py-0.5 rounded-full bg-red-500/10 text-red-400 text-[10px] font-bold tracking-wide uppercase">Escalation</span>
+</div>
+</div>
+<!-- Chat Item -->
+<div class="p-stack-md border-b border-slate-900 cursor-pointer transition-colors hover:bg-slate-900">
+<div class="flex justify-between items-start mb-unit">
+<h4 class="font-body-md font-semibold text-slate-300">Sarah Jenks</h4>
+<span class="text-[10px] text-slate-500">1h ago</span>
+</div>
+<p class="text-sm text-slate-500 line-clamp-1 mb-stack-sm">Just wanted to say the agent is working great!</p>
+</div>
+<!-- Chat Item -->
+<div class="p-stack-md border-b border-slate-900 cursor-pointer transition-colors hover:bg-slate-900">
+<div class="flex justify-between items-start mb-unit">
+<h4 class="font-body-md font-semibold text-slate-300">Project Quantum</h4>
+<span class="text-[10px] text-slate-500">3h ago</span>
+</div>
+<p class="text-sm text-slate-500 line-clamp-1 mb-stack-sm">Is there a way to bulk import agent knowledge?</p>
+<div class="flex gap-stack-sm">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-bold tracking-wide uppercase">Knowledge Gap</span>
+</div>
+</div>
+<!-- Chat Item -->
+<div class="p-stack-md border-b border-slate-900 cursor-pointer transition-colors hover:bg-slate-900">
+<div class="flex justify-between items-start mb-unit">
+<h4 class="font-body-md font-semibold text-slate-300">Daniel Craig</h4>
+<span class="text-[10px] text-slate-500">Yesterday</span>
+</div>
+<p class="text-sm text-slate-500 line-clamp-1 mb-stack-sm">Testing the agent response latency.</p>
+</div>
+</div>
+</section>
+<!-- Right: Chat Transcript -->
+<section class="flex-1 flex flex-col bg-surface-dim">
+<!-- Chat Header -->
+<div class="px-gutter py-stack-md border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
+<span class="material-symbols-outlined text-slate-400">person</span>
+</div>
+<div>
+<div class="flex items-center gap-stack-sm">
+<h3 class="font-body-md font-bold text-white leading-none">Alex Thompson</h3>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs text-slate-500">Online</span>
+</div>
+<p class="text-xs text-slate-400 mt-1">Session ID: 481-9922-AX · Agent: <span class="text-blue-400">SalesPro-V2</span></p>
+</div>
+</div>
+<div class="flex gap-stack-sm">
+<button class="px-stack-md py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-500 transition-all active:scale-95">
+                            Take Over Chat
+                        </button>
+<button class="p-2 bg-surface-container-high border border-outline-variant rounded-lg text-on-surface material-symbols-outlined">
+                            more_horiz
+                        </button>
+</div>
+</div>
+<!-- Messages -->
+<div class="flex-1 overflow-y-auto p-gutter space-y-stack-lg custom-scrollbar">
+<div class="text-center">
+<span class="px-4 py-1 bg-slate-900 text-slate-500 text-[10px] font-label-caps rounded-full border border-slate-800">Conversation Started · Oct 24, 2:14 PM</span>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-stack-sm">
+<div class="max-w-[70%] p-stack-md bg-slate-800 border border-slate-700 rounded-2xl rounded-tr-none text-slate-200 text-sm shadow-lg">
+                            Hi, I'm looking at your Enterprise options. Can you explain the pricing tiers?
+                        </div>
+<span class="text-[10px] text-slate-500 mr-unit">2:14 PM</span>
+</div>
+<!-- AI Response -->
+<div class="flex flex-col items-start gap-stack-sm">
+<div class="flex items-center gap-stack-sm mb-unit">
+<div class="w-6 h-6 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-blue-400">smart_toy</span>
+</div>
+<span class="font-label-caps text-[10px] text-blue-400 uppercase tracking-tighter">Fito AI Agent</span>
+</div>
+<div class="max-w-[70%] p-stack-md bg-slate-950 border border-blue-900/30 rounded-2xl rounded-tl-none text-slate-200 text-sm shadow-xl relative">
+<p class="mb-stack-sm">Hello Alex! I'd be happy to explain our Enterprise structure. We offer three primary tiers tailored to different scale requirements:</p>
+<ul class="list-disc pl-5 space-y-unit text-slate-400">
+<li><span class="text-white font-medium">Growth:</span> Up to 5 agents, 10k messages/mo.</li>
+<li><span class="text-white font-medium">Scale:</span> Up to 20 agents, unlimited messages, advanced RAG knowledge.</li>
+<li><span class="text-white font-medium">Custom:</span> Dedicated compute, custom SLAs, and on-prem options.</li>
+</ul>
+<p class="mt-stack-sm">Would you like me to send over the full PDF breakdown to your email?</p>
+</div>
+<span class="text-[10px] text-slate-500 ml-unit">2:15 PM</span>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-stack-sm">
+<div class="max-w-[70%] p-stack-md bg-slate-800 border border-slate-700 rounded-2xl rounded-tr-none text-slate-200 text-sm shadow-lg">
+                            Yes, that would be great. My email is alex.thompson@quantum.tech
+                        </div>
+<span class="text-[10px] text-slate-500 mr-unit">2:16 PM</span>
+</div>
+<!-- System Event -->
+<div class="flex items-center justify-center py-stack-md">
+<div class="flex items-center gap-stack-md px-stack-lg py-2 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+<span class="material-symbols-outlined text-emerald-400 text-sm">check_circle</span>
+<span class="text-xs text-emerald-400 font-medium">Automated Lead Capture: Email identified and synced to CRM</span>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex flex-col items-start gap-stack-sm">
+<div class="flex items-center gap-stack-sm mb-unit">
+<div class="w-6 h-6 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-blue-400">smart_toy</span>
+</div>
+<span class="font-label-caps text-[10px] text-blue-400 uppercase tracking-tighter">Fito AI Agent</span>
+</div>
+<div class="max-w-[70%] p-stack-md bg-slate-950 border border-blue-900/30 rounded-2xl rounded-tl-none text-slate-200 text-sm shadow-xl">
+                            Perfect. I've just sent the PDF to alex.thompson@quantum.tech. It should arrive in the next minute. Is there anything else I can help with regarding our technical specs or security compliance?
+                        </div>
+<span class="text-[10px] text-slate-500 ml-unit">2:16 PM</span>
+</div>
+</div>
+<!-- Reply Area (Locked for Log View but showing UI) -->
+<div class="p-gutter border-t border-slate-800 bg-slate-950/30">
+<div class="flex items-center gap-stack-md bg-slate-900 border border-slate-800 rounded-xl p-stack-sm">
+<button class="material-symbols-outlined text-slate-500 hover:text-white p-2">add_circle</button>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-white flex-1 outline-none" disabled="" placeholder="Type a message to take over conversation..." type="text"/>
+<button class="bg-blue-600/20 text-blue-400 px-stack-md py-2 rounded-lg text-xs font-bold uppercase tracking-widest opacity-50 cursor-not-allowed">Send</button>
+</div>
+<p class="text-[10px] text-slate-600 mt-stack-sm text-center">Chat is currently handled by <span class="text-blue-500">SalesPro-V2</span>. Click 'Take Over' to interact directly.</p>
+</div>
+</section>
+<!-- Right Sidebar: Context Panel (Asymmetric touch) -->
+<aside class="w-72 bg-slate-950 border-l border-slate-800 p-stack-lg hidden xl:block">
+<h5 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-lg">Session Analytics</h5>
+<div class="space-y-stack-lg">
+<div class="p-stack-md bg-slate-900 rounded-xl border border-slate-800">
+<p class="text-xs text-slate-500 mb-unit uppercase tracking-tighter">Sentiment</p>
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-emerald-400">sentiment_very_satisfied</span>
+<span class="text-sm font-semibold text-white">92% Positive</span>
+</div>
+</div>
+<div class="p-stack-md bg-slate-900 rounded-xl border border-slate-800">
+<p class="text-xs text-slate-500 mb-unit uppercase tracking-tighter">Agent Performance</p>
+<div class="space-y-stack-sm mt-stack-sm">
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">Response Speed</span>
+<span class="text-white">0.8s</span>
+</div>
+<div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-full w-[90%]"></div>
+</div>
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">Context Accuracy</span>
+<span class="text-white">98%</span>
+</div>
+<div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[98%]"></div>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md">Metadata</h5>
+<div class="space-y-stack-sm">
+<div class="flex justify-between">
+<span class="text-xs text-slate-500">Browser</span>
+<span class="text-xs text-slate-300">Chrome / MacOS</span>
+</div>
+<div class="flex justify-between">
+<span class="text-xs text-slate-500">Location</span>
+<span class="text-xs text-slate-300">San Francisco, US</span>
+</div>
+<div class="flex justify-between">
+<span class="text-xs text-slate-500">IP Address</span>
+<span class="text-xs text-slate-300">192.168.1.44</span>
+</div>
+</div>
+</div>
+<div class="pt-stack-lg">
+<img alt="Visitor location map" class="w-full h-32 object-cover rounded-xl border border-slate-800" data-alt="A clean, high-contrast digital map rendering in a dark mode aesthetic, showing a glowing blue pinpoint over San Francisco. The map uses a palette of deep navy and charcoal grey with electric blue neon lines for borders and roads. The visual style is minimalist and futuristic, consistent with high-end enterprise data visualization dashboards." data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ79jLr8rrozzR-L7iP5BclIvQKm3Gyh18iSnUYfGLYkp2kX6hLl_ACnPQmMGeez0VOGW2HQPJ0SOwUGavCsamZgptJ90SLV1u4m07bZYQ9XQbmI5-GAtdcJMOtOU_SKDgkCI_uTByebVlRedyeb6UzTmWKGUK_14xxi53DgOQmzI7ogcz7NVpXJVG_wfRhQg_DhXiYahsbX32QDFC7enLJW5l9EZvZkhccBap7fyWCTyXFKfRJL7k7q9Uv1MB5mfVJDb1jMlwgl-0"/>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (Suppressed for focused dashboard view as per rules, but including semantic reference) -->
+<footer class="hidden">
+<p>© 2024 Fito Agents AI. Intelligence Redefined.</p>
+</footer>
+</body></html>

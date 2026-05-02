@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c6c6cb",
+                    "on-secondary-container": "#e4e7ff",
+                    "surface-container": "#1d2022",
+                    "surface-container-lowest": "#0b0f10",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-variant": "#323537",
+                    "on-secondary-fixed": "#001551",
+                    "surface-container-highest": "#323537",
+                    "surface-container-low": "#191c1e",
+                    "background": "#101415",
+                    "tertiary": "#4edea3",
+                    "on-primary": "#2d3137",
+                    "inverse-surface": "#e0e3e5",
+                    "primary": "#c3c6cf",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#003824",
+                    "on-surface": "#e0e3e5",
+                    "primary-fixed": "#dfe2eb",
+                    "outline": "#8f9095",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#001108",
+                    "inverse-on-surface": "#2d3133",
+                    "surface-bright": "#363a3b",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#101415",
+                    "secondary-container": "#0356ff",
+                    "primary-fixed-dim": "#c3c6cf",
+                    "primary-container": "#0a0e14",
+                    "on-primary-fixed": "#181c22",
+                    "secondary-fixed": "#dce1ff",
+                    "on-background": "#e0e3e5",
+                    "on-secondary-fixed-variant": "#0039b3",
+                    "surface-container-high": "#272a2c",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#002113",
+                    "outline-variant": "#45474b",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#43474e",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "surface": "#101415",
+                    "on-secondary": "#002780",
+                    "inverse-primary": "#5b5e66",
+                    "surface-tint": "#c3c6cf",
+                    "on-primary-container": "#787b83",
+                    "on-tertiary-container": "#008c60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "margin-page": "40px",
+                    "container-max": "1440px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "h2": ["Space Grotesk"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "h3": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 2px;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.7);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased custom-scrollbar">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-xl shadow-black/50">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-white font-h2">Fito Agents</span>
+<div class="hidden md:flex gap-6 items-center font-space-grotesk font-medium">
+<a class="text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">How it Works</a>
+<a class="text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">Agent Types</a>
+<a class="text-slate-300 hover:text-blue-400 transition-all active:scale-95 duration-150" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 mr-4">
+<button class="p-2 text-slate-300 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-300 hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="px-4 py-2 rounded-lg text-slate-300 font-medium hover:text-white transition-all">Login</button>
+<button class="px-6 py-2 rounded-lg bg-gradient-to-b from-blue-500 to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/20 hover:brightness-110 transition-all active:scale-95">Get Started</button>
+</div>
+</nav>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r border-slate-800 bg-slate-950 pt-16 z-40">
+<div class="p-6 border-b border-slate-800 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center">
+<img alt="Business workspace logo" class="w-6 h-6" data-alt="A minimalist tech logo for Fito Agents consisting of sleek white geometric lines forming an abstract 'FA' monogram set against a deep obsidian black circular background. The style is sharp, corporate, and high-tech, reflecting a premium enterprise software aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVCayTQXh_HuZ5BVeSGqfJiuAuZAsYdVgabOq7OD5OsmdgXZjeFhHZqo-QDTqLGE9hBDm-LiQEbF_BiWWtOY_A-s1IDoWhAXC1rMD1yA_faNfBUkhRGzvn7uIfaSAeT1jgwcKVcdq31euE9MWsgpZjpjJHF7HEHDvOC4KFooLabXNcd1rYFczMG2mi8_GlOUd1syZw95HzGU7ZAGnHpWe5JHjCrULmitzqVeBQC9GRlYWSlC6QOptOMR40ntETEXSchmiTkQRn5Ap_"/>
+</div>
+<div>
+<p class="text-sm font-bold tracking-tight text-white font-h2">Fito Agents</p>
+<p class="text-[10px] uppercase tracking-widest text-slate-500">Enterprise Plan</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-space-grotesk text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-space-grotesk text-sm">Agent Fleet</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-blue-600/10 text-blue-400 border-r-2 border-blue-500" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="font-space-grotesk text-sm">Knowledge Base</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-space-grotesk text-sm">Leads</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-space-grotesk text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-space-grotesk text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-4 py-4 space-y-1 mb-8">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-space-grotesk text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-space-grotesk text-sm">Account</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="max-w-[1440px] mx-auto p-margin-page">
+<!-- Page Header -->
+<header class="mb-stack-lg flex justify-between items-end">
+<div>
+<span class="font-label-caps text-secondary uppercase mb-2 block">Integration Hub</span>
+<h1 class="font-h1 text-on-surface mb-2">WordPress Plugin Setup</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl">Connect your AI agents to your WordPress ecosystem in minutes. Follow the steps below to initialize and configure your custom chat interface.</p>
+</div>
+<button class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-6 py-3 rounded-xl font-semibold hover:brightness-110 transition-all">
+<span class="material-symbols-outlined">rocket_launch</span>
+                    Deploy New Agent
+                </button>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Setup Instructions Bento Section -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+<div class="bg-surface-container-low border border-outline-variant p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 blur-3xl transition-all group-hover:bg-secondary/10"></div>
+<h3 class="font-h3 text-on-surface mb-6 flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-sm font-bold">1</span>
+                            Installation Guide
+                        </h3>
+<ul class="space-y-stack-md">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">download</span>
+<div>
+<p class="font-semibold text-on-surface">Install Fito Agents AI Chat</p>
+<p class="text-sm text-on-surface-variant">Download the plugin from our repository or search in the WP Plugin store.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">key</span>
+<div>
+<p class="font-semibold text-on-surface">Paste Agent ID</p>
+<p class="text-sm text-on-surface-variant">Link your unique workspace agent using the identifier found in your dashboard.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">palette</span>
+<div>
+<p class="font-semibold text-on-surface">Choose Position &amp; Theme</p>
+<p class="text-sm text-on-surface-variant">Customize where the bubble appears and match it to your site's branding.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div>
+<p class="font-semibold text-on-surface">Save &amp; Preview</p>
+<p class="text-sm text-on-surface-variant">Confirm changes and see your agent live on your storefront.</p>
+</div>
+</li>
+</ul>
+<div class="mt-8 p-4 bg-surface-container-highest/30 rounded-xl border border-outline-variant/30">
+<p class="text-xs text-on-surface-variant mb-2 font-label-caps uppercase tracking-tighter">Documentation</p>
+<a class="text-sm text-secondary hover:underline flex items-center gap-1" href="#">
+                                View Advanced API Docs <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Connection Card -->
+<div class="bg-surface-container-low border border-outline-variant p-8 rounded-2xl">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-h3 text-on-surface">Connection Status</h3>
+<div class="flex items-center gap-2 bg-on-tertiary-fixed-variant/20 px-3 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-[10px] font-bold text-tertiary uppercase">Agent Active</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Last ping</span>
+<span class="text-on-surface">2 minutes ago</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Environment</span>
+<span class="text-on-surface">Production (WP 6.4)</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-tertiary h-full w-[94%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant text-right">94% uptime health score</p>
+</div>
+</div>
+</div>
+<!-- Plugin Settings Preview Section -->
+<div class="col-span-12 lg:col-span-7">
+<div class="bg-surface-container-low border border-outline-variant rounded-2xl flex flex-col h-full overflow-hidden">
+<div class="p-8 border-b border-outline-variant bg-surface-container-low/50">
+<h3 class="font-h3 text-on-surface mb-1">Plugin Settings Preview</h3>
+<p class="text-sm text-on-surface-variant">Real-time configuration for your WordPress instance.</p>
+</div>
+<div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="space-y-stack-md">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-on-surface-variant">Agent ID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-secondary focus:ring-0 transition-all font-mono text-sm" readonly="" type="text" value="AGENT_92384_XP_24"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/20 rounded-xl border border-outline-variant/30">
+<div>
+<p class="font-semibold text-on-surface">Enable Widget</p>
+<p class="text-xs text-on-surface-variant">Display on all pages</p>
+</div>
+<button class="w-12 h-6 bg-secondary-container rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full ml-auto shadow-sm"></div>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-on-surface-variant">Position</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:border-secondary focus:ring-0 transition-all appearance-none cursor-pointer">
+<option>Bottom Right (Default)</option>
+<option>Bottom Left</option>
+<option>Top Floating Bar</option>
+<option>Inline Element</option>
+</select>
+</div>
+</div>
+<div class="space-y-stack-md">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-on-surface-variant">Brand Color</label>
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="w-8 h-8 rounded bg-secondary-container cursor-pointer ring-2 ring-white/10 ring-offset-2 ring-offset-surface-container-lowest"></div>
+<input class="bg-transparent border-none p-0 text-on-surface font-mono text-sm focus:ring-0 w-24" type="text" value="#0356FF"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-on-surface-variant">Mode Selector</label>
+<div class="flex gap-2 p-1 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<button class="flex-1 py-2 px-3 rounded-md bg-surface-variant text-on-surface flex items-center justify-center gap-2 text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-lg">dark_mode</span> Dark
+                                        </button>
+<button class="flex-1 py-2 px-3 rounded-md text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-2 text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-lg">light_mode</span> Light
+                                        </button>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full flex items-center justify-center gap-2 border border-outline-variant text-on-surface px-6 py-3 rounded-xl font-semibold hover:bg-surface-container-highest transition-all active:scale-95">
+<span class="material-symbols-outlined">sync_alt</span>
+                                        Test Connection
+                                    </button>
+</div>
+</div>
+</div>
+<div class="mt-auto p-8 bg-surface-container-highest/10 border-t border-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a tech executive in a dark minimalist setting. The subject is wearing a high-quality navy blazer, illuminated by a subtle blue rim light from the side. The background is softly out of focus, showing a clean, modern workspace with geometric architectural details. The lighting is moody, corporate, and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO4Dka0dpOZA--Gx9MRMY_yOvuDxZJ1e82vtEP8VQ4IPxEAic-v7UPK5iL2ZAtSqzw_iZjV29wizlNmx4EN1F1hJecB3zINzHiv0c2VWcfhgD3vzA4k801Rd30101uMnwc98J1BrSpNSK0FO4XgQg_VYcayWcYyCYLLW29a6G34u1KmSQMzeV1HT9CyAU7HKwTKd8XZg1SNDVyWoK5g2GnLS_csQd9bBNkAFHB3fmrRoU434-KC1ECr8VUU8Z2jj9v1AzGlsxkhHjq"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant">Chief Technical Officer</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-8 py-3 rounded-xl bg-slate-900 border border-slate-800 text-on-surface font-semibold hover:bg-slate-800 transition-all">Discard</button>
+<button class="px-8 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-semibold shadow-xl shadow-blue-500/10 hover:brightness-110 transition-all">Save Changes</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Section (Visual Representation) -->
+<div class="col-span-12">
+<div class="bg-surface-container-low border border-outline-variant rounded-2xl p-margin-page relative overflow-hidden min-h-[400px] flex items-center justify-center">
+<div class="absolute inset-0 z-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #45474b 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="z-10 text-center max-w-lg">
+<h4 class="font-h3 text-on-surface mb-4">Website Preview</h4>
+<p class="text-on-surface-variant text-sm mb-8">How the Fito Agent will appear to your customers on the front-end of your WordPress site.</p>
+<!-- Mock WP Site Layout -->
+<div class="w-full max-w-2xl bg-white/5 rounded-xl border border-white/10 p-6 aspect-video relative">
+<div class="w-full h-4 bg-white/10 rounded mb-4"></div>
+<div class="flex gap-4">
+<div class="w-1/2 h-32 bg-white/10 rounded"></div>
+<div class="w-1/2 space-y-2">
+<div class="w-full h-4 bg-white/10 rounded"></div>
+<div class="w-full h-4 bg-white/10 rounded"></div>
+<div class="w-2/3 h-4 bg-white/10 rounded"></div>
+</div>
+</div>
+<!-- Floating Agent -->
+<div class="absolute bottom-4 right-4 animate-bounce">
+<div class="w-12 h-12 bg-secondary-container rounded-full shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="absolute bottom-14 right-0 w-48 bg-slate-900 border border-slate-800 p-3 rounded-xl shadow-2xl text-left">
+<p class="text-[10px] text-on-surface-variant">Fito Agent</p>
+<p class="text-[12px] font-semibold text-on-surface">Hello! How can I help with your setup today?</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full px-8 flex flex-col md:flex-row justify-between items-center py-12 bg-slate-950 border-t border-slate-900 font-space-grotesk text-xs uppercase tracking-widest mt-12">
+<div class="mb-6 md:mb-0">
+<span class="text-lg font-bold text-white">Fito Agents AI</span>
+</div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">Security</a>
+<a class="text-slate-500 hover:text-emerald-400 transition-colors" href="#">API Docs</a>
+</div>
+<div class="text-slate-500">
+            © 2024 Fito Agents AI. Intelligence Redefined.
+        </div>
+</footer>
+</body></html>

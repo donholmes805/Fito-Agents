@@ -1,0 +1,12 @@
+kind: "AppHostingYaml"
+schemaVersion: "v1"
+
+# Specify the Node.js version
+runConfig:
+  minInstances: 0
+  maxInstances: 10
+  memory: "512Mi"
+
+# If your package.json is NOT in the root of the GitHub repo,
+# you would uncomment and set the property below:
+# appRoot: "Fito Agents"
