@@ -102,5 +102,11 @@ service cloud.firestore {
       allow read: if isAdmin() || (isAuthenticated() && isBusinessUser(resource.data.businessId));
       allow write: if isAdmin();
     }
+    
+    // --- Sales Applications ---
+    match /salesApplications/{appId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
   }
 }

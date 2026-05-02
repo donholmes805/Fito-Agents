@@ -27,6 +27,7 @@ export default function PublicFooter() {
             <li><Link href="/how-it-works" className="hover:text-secondary transition-colors">Process</Link></li>
             <li><Link href="/agent-types" className="hover:text-secondary transition-colors">Blueprints</Link></li>
             <li><Link href="/pricing" className="hover:text-secondary transition-colors">Pricing</Link></li>
+            <li><Link href="/sales-partners" className="hover:text-secondary transition-colors">Become a Partner</Link></li>
             <li><Link href="/contact" className="hover:text-secondary transition-colors">Request Demo</Link></li>
           </ul>
         </div>

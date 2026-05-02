@@ -12,6 +12,8 @@ const adminSidebarItems = [
   { name: "Agents", icon: "smart_toy", href: "/admin/agents" },
   { name: "Conversations", icon: "forum", href: "/admin/conversations" },
   { name: "Leads", icon: "person_add", href: "/admin/leads" },
+  { name: "Sales Partners", icon: "handshake", href: "/admin/sales-applications" },
+  { name: "Partner Packet", icon: "description", href: "/admin/sales-partner-packet" },
   { name: "Billing", icon: "payments", href: "/admin/billing" },
   { name: "Usage", icon: "database", href: "/admin/usage" },
   { name: "API Settings", icon: "api", href: "/admin/api-settings" },
