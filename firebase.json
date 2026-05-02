@@ -13,5 +13,8 @@
         "supportEmail": "fitotechnologyllc@gmail.com"
       }
     }
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }
