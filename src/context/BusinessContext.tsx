@@ -15,12 +15,14 @@ interface BusinessContextType {
 const BusinessContext = createContext<BusinessContextType | undefined>(undefined);
 
 export function BusinessProvider({ children }: { children: React.ReactNode }) {
-  const { businessId } = useAuth();
+  const { businessId, loading: authLoading } = useAuth();
   const [business, setBusiness] = useState<Business | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadBusiness = async () => {
+    if (authLoading) return;
+    
     if (!businessId) {
       setBusiness(null);
       setLoading(false);
@@ -29,11 +31,12 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
 
     try {
       setLoading(true);
+      setError(null);
       const data = await businessService.getBusinessById(businessId);
       setBusiness(data);
     } catch (err: any) {
       console.error("Failed to load business context:", err);
-      setError(err.message);
+      setError(err.message || "Failed to load business data");
     } finally {
       setLoading(false);
     }
@@ -41,7 +44,7 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     loadBusiness();
-  }, [businessId]);
+  }, [businessId, authLoading]);
 
   return (
     <BusinessContext.Provider value={{ business, loading, error, refreshBusiness: loadBusiness }}>

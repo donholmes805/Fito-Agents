@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
+import { useBusiness } from "@/context/BusinessContext";
 
 const sidebarItems = [
   { name: "Overview", icon: "dashboard", href: "/dashboard" },
@@ -22,7 +23,8 @@ const sidebarItems = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { userProfile, logout, isTeamMember } = useAuth();
+  const { userProfile, logout, isTeamMember, isAdmin, isOwner } = useAuth();
+  const { business, loading: businessLoading } = useBusiness();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -134,14 +136,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {filteredSidebarItems.find(i => i.href === pathname)?.name || "Dashboard"}
               </h2>
               <div className="flex gap-2">
-                <span className="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-bold border border-secondary/20 uppercase tracking-widest hidden md:inline-block">Business Plan</span>
-                <span className="px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-bold border border-tertiary/20 uppercase tracking-widest">Active</span>
+                <span className="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-bold border border-secondary/20 uppercase tracking-widest hidden md:inline-block">
+                  {businessLoading ? "Plan" : (business?.plan ? `${business.plan} Plan` : "No Plan")}
+                </span>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-widest ${
+                  business?.subscriptionStatus === 'active' || business?.subscriptionStatus === 'trial' ? 'bg-tertiary/10 text-tertiary border-tertiary/20' : 'bg-on-surface-variant/10 text-on-surface-variant border-on-surface-variant/20'
+                }`}>
+                  {businessLoading ? "..." : (business?.subscriptionStatus || "Inactive")}
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-4 lg:gap-8">
               <div className="hidden md:flex items-center gap-2 text-on-surface-variant">
                   <span className="material-symbols-outlined text-sm">business</span>
-                  <p className="text-xs font-bold uppercase tracking-widest truncate max-w-[120px]">Acme Corp</p>
+                  <p className="text-xs font-bold uppercase tracking-widest truncate max-w-[150px]">
+                    {businessLoading ? "..." : (business?.name || (isAdmin || isOwner ? "Fito Agents" : "No Business"))}
+                  </p>
               </div>
               <div className="flex items-center gap-4">
                   <button className="text-on-surface-variant hover:text-white relative p-2 bg-surface-container rounded-xl border border-outline-variant transition-all">

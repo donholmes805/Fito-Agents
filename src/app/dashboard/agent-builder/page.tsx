@@ -2,16 +2,18 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { agentService, businessService } from "@/services";
-import { Agent, Message, Business } from "@/types";
+import { useBusiness } from "@/context/BusinessContext";
+import { agentService } from "@/services";
+import { Agent, Message } from "@/types";
 import { getPlanConfig } from "@/config/plans";
 import Link from "next/link";
 
 export default function AgentBuilderPage() {
-  const { businessId } = useAuth();
+  const { businessId, isOwner, isAdmin } = useAuth();
+  const { business, loading: businessLoading } = useBusiness();
   const [agents, setAgents] = useState<Agent[]>([]);
-  const [business, setBusiness] = useState<Business | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -37,8 +39,10 @@ export default function AgentBuilderPage() {
   useEffect(() => {
     if (businessId) {
       loadAgents();
+    } else if (!businessLoading) {
+      setLoading(false);
     }
-  }, [businessId]);
+  }, [businessId, businessLoading]);
 
   useEffect(() => {
       if (scrollRef.current) {
@@ -47,26 +51,28 @@ export default function AgentBuilderPage() {
   }, [testMessages, testSending]);
 
   const loadAgents = async () => {
-    setLoading(true);
-    try {
-      const [agentsData, bizData] = await Promise.all([
-        agentService.getAgentsByBusinessId(businessId!),
-        businessService.getBusinessById(businessId!)
-      ]);
-      
-      setAgents(agentsData);
-      setBusiness(bizData);
+    if (!businessId) {
+        setLoading(false);
+        return;
+    }
 
-      if (bizData) {
-        const limits = getPlanConfig(bizData.plan);
+    setLoading(true);
+    setError(null);
+    try {
+      const agentsData = await agentService.getAgentsByBusinessId(businessId);
+      setAgents(agentsData);
+
+      if (business) {
+        const limits = getPlanConfig(business.plan);
         setLimitReached(agentsData.length >= limits.maxAgents);
       }
 
       if (agentsData.length > 0 && !selectedAgent) {
         setSelectedAgent(agentsData[0]);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Failed to load agents:", err);
+      setError("Failed to load your agents. Please try again or check your Firestore rules.");
     } finally {
       setLoading(false);
     }
@@ -201,12 +207,57 @@ export default function AgentBuilderPage() {
       }
   };
 
-  if (loading && agents.length === 0) {
+  if (loading || businessLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex flex-col items-center justify-center h-64 space-y-4">
         <div className="w-10 h-10 border-4 border-secondary/20 border-t-secondary rounded-full animate-spin"></div>
+        <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest animate-pulse">Synchronizing Agent Data...</p>
       </div>
     );
+  }
+
+  if (error) {
+    return (
+        <div className="bg-error/10 border border-error/20 rounded-3xl p-12 text-center space-y-6">
+            <div className="w-20 h-20 bg-error/10 rounded-full flex items-center justify-center mx-auto text-error">
+                <span className="material-symbols-outlined text-4xl">error</span>
+            </div>
+            <div className="space-y-2">
+                <h3 className="text-xl font-bold text-white">Data Loading Error</h3>
+                <p className="text-on-surface-variant max-w-sm mx-auto">{error}</p>
+            </div>
+            <button 
+              onClick={() => loadAgents()}
+              className="btn-primary px-10 py-4 rounded-2xl mx-auto"
+            >
+                Try Again
+            </button>
+        </div>
+    );
+  }
+
+  if (!businessId) {
+      return (
+        <div className="bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded-3xl p-12 text-center space-y-6">
+            <div className="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mx-auto">
+                <span className="material-symbols-outlined text-4xl text-on-surface-variant">business</span>
+            </div>
+            <div className="space-y-2">
+                <h3 className="text-xl font-bold text-white">No Business Profile Connected</h3>
+                <p className="text-on-surface-variant max-w-sm mx-auto">You need to create or select a business before creating an AI agent.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link href="/onboarding/business" className="btn-primary px-8 py-4 rounded-2xl">
+                    Create Business Profile
+                </Link>
+                {(isAdmin || isOwner) && (
+                    <Link href="/admin" className="px-8 py-4 rounded-2xl bg-surface-container text-white font-bold text-sm hover:bg-surface-container-high transition-all">
+                        Go to Admin Dashboard
+                    </Link>
+                )}
+            </div>
+        </div>
+      );
   }
 
   return (
@@ -249,7 +300,7 @@ export default function AgentBuilderPage() {
                   onClick={handleCreateNew}
                   className="btn-primary px-10 py-4 rounded-2xl mx-auto"
                 >
-                    Build My First Agent
+                    Create Your First Agent
                 </button>
             </div>
           ) : (
