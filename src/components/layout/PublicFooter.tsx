@@ -34,9 +34,9 @@ export default function PublicFooter() {
         <div className="space-y-6">
           <h4 className="text-xs font-bold text-white uppercase tracking-widest">Legal</h4>
           <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-            <li><Link href="#" className="hover:text-secondary transition-colors">Privacy Policy</Link></li>
-            <li><Link href="#" className="hover:text-secondary transition-colors">Terms of Service</Link></li>
-            <li><Link href="#" className="hover:text-secondary transition-colors">Security</Link></li>
+            <li><Link href="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-secondary transition-colors">Terms of Service</Link></li>
+            <li><Link href="/refund" className="hover:text-secondary transition-colors">Refund Policy</Link></li>
           </ul>
         </div>
       </div>
