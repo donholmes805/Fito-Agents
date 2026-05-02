@@ -8,6 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const sidebarItems = [
   { name: "Overview", icon: "dashboard", href: "/dashboard" },
+  { name: "Analytics", icon: "bar_chart", href: "/dashboard/analytics" },
   { name: "Company Profile", icon: "business", href: "/dashboard/company" },
   { name: "Agent Builder", icon: "smart_toy", href: "/dashboard/agent-builder" },
   { name: "Knowledge Base", icon: "menu_book", href: "/dashboard/knowledge-base" },
