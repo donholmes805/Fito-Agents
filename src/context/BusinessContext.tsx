@@ -15,7 +15,7 @@ interface BusinessContextType {
 const BusinessContext = createContext<BusinessContextType | undefined>(undefined);
 
 export function BusinessProvider({ children }: { children: React.ReactNode }) {
-  const { businessId, loading: authLoading } = useAuth();
+  const { businessId, userProfile, isOwner, loading: authLoading } = useAuth();
   const [business, setBusiness] = useState<Business | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +32,23 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true);
       setError(null);
-      const data = await businessService.getBusinessById(businessId);
+      let data = await businessService.getBusinessById(businessId);
+      
+      // MIGRATION: If user is owner and business doesn't have ownerOverride, update it
+      if (data && isOwner && !data.ownerOverride) {
+        console.log("Migrating owner business to Owner Access plan...");
+        const migrationData: Partial<Business> = {
+          ownerOverride: true,
+          plan: "free",
+          subscriptionStatus: "owner_override",
+          setupFeeStatus: "waived",
+          customPlan: "Owner Access"
+        };
+        await businessService.updateBusiness(businessId, migrationData);
+        // Update local data object for immediate consistency
+        data = { ...data, ...migrationData };
+      }
+      
       setBusiness(data);
     } catch (err: any) {
       console.error("Failed to load business context:", err);

@@ -39,7 +39,8 @@ export const aiServerService = {
     }
 
     // 2. Check Plan Limits
-    if (agent.monthlyMessagesUsed >= agent.monthlyMessageLimit) {
+    const isOwnerOverride = business.ownerOverride === true || business.subscriptionStatus === 'owner_override';
+    if (!isOwnerOverride && agent.monthlyMessagesUsed >= agent.monthlyMessageLimit) {
       return {
         content: agent.fallbackMessage || "This AI agent has reached its monthly message limit. Please contact the business directly.",
         isLimitReached: true

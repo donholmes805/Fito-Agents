@@ -37,7 +37,19 @@ export default function BusinessOnboardingPage() {
 
     try {
       // 1. Create Business
-      const business = await businessService.createBusiness(user.uid, formData);
+      const isPlatformOwner = userProfile?.role === "owner";
+      const businessData = {
+        ...formData,
+        ...(isPlatformOwner ? {
+          ownerOverride: true,
+          plan: "free" as const,
+          subscriptionStatus: "owner_override" as const,
+          setupFeeStatus: "waived" as const,
+          customPlan: "Owner Access"
+        } : {})
+      };
+      
+      const business = await businessService.createBusiness(user.uid, businessData);
       
       // 2. Link User to Business
       await userService.updateUserBusinessId(user.uid, business.id);

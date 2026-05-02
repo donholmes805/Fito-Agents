@@ -95,11 +95,13 @@ export default function AdminCustomersPage() {
                         </td>
                         <td className="px-8 py-6 text-center">
                             <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter border ${
-                                biz.subscriptionStatus === 'active' || biz.subscriptionStatus === 'owner_override'
+                                biz.ownerOverride
+                                ? 'bg-secondary/10 border-secondary/20 text-secondary'
+                                : biz.subscriptionStatus === 'active' || biz.subscriptionStatus === 'owner_override'
                                 ? 'bg-tertiary/10 border-tertiary/20 text-tertiary'
                                 : 'bg-surface-container border-outline-variant text-on-surface-variant'
                             }`}>
-                                {biz.subscriptionStatus || 'Trial'}
+                                {biz.ownerOverride ? 'Owner Access' : (biz.subscriptionStatus || 'Trial')}
                             </span>
                         </td>
                         <td className="px-8 py-6 text-right">

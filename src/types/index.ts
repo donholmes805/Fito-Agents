@@ -29,8 +29,9 @@ export interface Business {
   stripeSubscriptionId?: string;
   currentPeriodEnd?: string;
   monthlyMessagesUsed?: number;
-  setupFeeStatus?: "pending" | "paid";
+  setupFeeStatus?: "pending" | "paid" | "waived";
   ownerOverride?: boolean;
+  customPlan?: string;
   lastUsageResetAt?: string;
   nextUsageResetAt?: string;
   usageWarning80SentAt?: string;

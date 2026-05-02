@@ -136,13 +136,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {filteredSidebarItems.find(i => i.href === pathname)?.name || "Dashboard"}
               </h2>
               <div className="flex gap-2">
-                <span className="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-bold border border-secondary/20 uppercase tracking-widest hidden md:inline-block">
-                  {businessLoading ? "Plan" : (business?.plan ? `${business.plan} Plan` : "No Plan")}
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-widest ${
+                  business?.ownerOverride ? 'bg-secondary/10 text-secondary border-secondary/20 shadow-[0_0_10px_rgba(3,86,255,0.2)]' : 'bg-secondary/10 text-secondary border-secondary/20'
+                }`}>
+                  {businessLoading ? "Plan" : (business?.ownerOverride ? "OWNER ACCESS" : (business?.plan ? `${business.plan} Plan` : "No Plan"))}
                 </span>
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-widest ${
-                  business?.subscriptionStatus === 'active' || business?.subscriptionStatus === 'trial' ? 'bg-tertiary/10 text-tertiary border-tertiary/20' : 'bg-on-surface-variant/10 text-on-surface-variant border-on-surface-variant/20'
+                  business?.ownerOverride || business?.subscriptionStatus === 'active' || business?.subscriptionStatus === 'trial' ? 'bg-tertiary/10 text-tertiary border-tertiary/20' : 'bg-on-surface-variant/10 text-on-surface-variant border-on-surface-variant/20'
                 }`}>
-                  {businessLoading ? "..." : (business?.subscriptionStatus || "Inactive")}
+                  {businessLoading ? "..." : (business?.ownerOverride ? "ACTIVE" : (business?.subscriptionStatus || "Inactive"))}
                 </span>
               </div>
             </div>

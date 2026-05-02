@@ -92,7 +92,16 @@ export default function BillingPage() {
               </div>
             </div>
             
-            {business.stripeCustomerId ? (
+            {business.ownerOverride ? (
+                <div className="flex flex-col items-end text-right">
+                    <span className="text-[10px] font-black text-tertiary uppercase tracking-widest bg-tertiary/10 px-4 py-2 rounded-xl border border-tertiary/20">
+                        Managed by Fito Technology
+                    </span>
+                    <p className="text-[9px] text-on-surface-variant font-bold mt-2 max-w-[200px]">
+                        Internal accounts are managed via the Platform Owner dashboard.
+                    </p>
+                </div>
+            ) : business.stripeCustomerId ? (
               <button 
                 onClick={handlePortal} 
                 disabled={loading}
@@ -190,7 +199,7 @@ export default function BillingPage() {
       </div>
 
       {/* Pricing Teaser / Comparison if not on top plan */}
-      {business.plan !== 'advanced' && (
+      {business.plan !== 'advanced' && !business.ownerOverride && (
         <div className="glass-panel rounded-3xl p-8 rim-light border-secondary/20 bg-secondary/5">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div>

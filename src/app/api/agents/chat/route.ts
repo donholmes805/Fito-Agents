@@ -46,10 +46,10 @@ export async function POST(req: NextRequest) {
     // But refetching is safer to avoid blocking a user who just had their period reset.
     const business = (await adminDb.collection("businesses").doc(businessId).get()).data();
 
-    const isOwnerOverride = business?.ownerOverride === true;
+    const isOwnerOverride = business?.ownerOverride === true || business?.subscriptionStatus === 'owner_override';
     const isActive = ["active", "trial", "owner_override"].includes(business?.subscriptionStatus);
     
-    if (!isOwnerOverride && !isActive) {
+    if (!isActive) {
       return NextResponse.json({ 
         error: "subscription_inactive",
         message: "This AI agent is not currently available because the business subscription needs attention. Please contact the business directly." 
